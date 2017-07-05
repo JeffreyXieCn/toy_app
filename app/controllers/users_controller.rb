@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @firstpost = @user.microposts.first
-    @lastpost = @user.microposts.last
+    #@firstpost = @user.microposts.first
+    #@lastpost = @user.microposts.last
   end
 
   # GET /users/new
