@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users
   # GET /users.json
@@ -20,16 +20,17 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+    logger.debug "New user: #{@user.inspect}"
 
     respond_to do |format|
       if @user.save
+        logger.debug 'The new user is saved and will redirect to the user page'
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
